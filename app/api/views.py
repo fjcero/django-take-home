@@ -1,3 +1,4 @@
+from django.db import IntegrityError
 from rest_framework import mixins, status, viewsets
 from rest_framework.response import Response
 
@@ -20,7 +21,10 @@ class WebhooksViewSet(viewsets.GenericViewSet, mixins.CreateModelMixin):
     def create(self, request, *args, **kwargs):
         try:
             return super().create(request, *args, **kwargs)
-        except:
+        except IntegrityError:
+            """
+            Ignore all Integrity Error expetions
+            """
             pass
 
         return Response(request.data, status=status.HTTP_201_CREATED)
