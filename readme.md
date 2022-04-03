@@ -112,7 +112,7 @@ Once the reviewers are added to the repository, we will conduct a quick PR revie
 - [x] Initial Commit
 - [x] Setup Dev Environment (Runtime, Virtual Env, IDE)
 - [x] Support incoming webhooks v1: receive, validate, and save Patients (Leverage on DRF)
-- [ ] Support tests for validations and response in order to prevent regressions
+- [x] Support tests for validations and response in order to prevent regressions
 - [ ] Spike: how webhooks implementation could be improved
 
 ### Scripts
@@ -150,3 +150,29 @@ pipenv run dev # python manage.py migrate
   "python.formatting.provider": "black"
 }
 ```
+
+### Endpoint
+
+**Endpoint**: `/ehr_webhook/`
+**Allow**: `POST`, `OPTIONS`
+**Content-Type**: `application/json`
+**Payload**
+```json
+[
+    {
+        "email": "jane@example.com",
+        "name": "Jane Doe"
+    },
+    {
+        "email": "fjcero@gmail.com",
+        "name": "Francisco"
+    }
+]
+```
+
+### Specifications
+
+- The implementation of the endpoint returns a `201` HTTP Status Code, even if duplicates exist. 
+- HTTP errors like `400x` and `500x` are triggered in invalid situations,  for example malformed `json`
+- Tests are passing and there are no regressions
+- Conventional commits format applied
