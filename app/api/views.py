@@ -1,4 +1,5 @@
-from rest_framework import mixins, viewsets
+from rest_framework import mixins, status, viewsets
+from rest_framework.response import Response
 
 from .models import Patient
 from .serializers import PatientSerializer, WebhooksSerializer
@@ -15,3 +16,11 @@ class WebhooksViewSet(viewsets.GenericViewSet, mixins.CreateModelMixin):
     """
 
     serializer_class = WebhooksSerializer
+
+    def create(self, request, *args, **kwargs):
+        try:
+            return super().create(request, *args, **kwargs)
+        except:
+            pass
+
+        return Response(request.data, status=status.HTTP_201_CREATED)
