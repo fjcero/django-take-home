@@ -16,3 +16,4 @@ class WebhooksSerializer(serializers.ModelSerializer):
     class Meta:
         model = Patient
         fields = ["email", "name"]
+        validators = []
