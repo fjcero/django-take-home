@@ -1,6 +1,7 @@
 from rest_framework import status
 from rest_framework.test import APITestCase
-from .factories import PatientFactory
+
+# from .factories import PatientFactory
 
 # Required to enable SkipTest
 # import unittest
@@ -8,7 +9,7 @@ from .factories import PatientFactory
 
 class APITest(APITestCase):
     def test_get_patient(self):
-        patient_mocks = PatientFactory.create_batch(4)
+        # patient_mocks = PatientFactory.create_batch(4)
         response = self.client.get("/patient/")
         self.assertEquals(response.status_code, status.HTTP_200_OK)
         self.assertEquals(len(response.json()), 4)
