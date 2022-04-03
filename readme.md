@@ -113,7 +113,13 @@ Once the reviewers are added to the repository, we will conduct a quick PR revie
 - [x] Setup Dev Environment (Runtime, Virtual Env, IDE)
 - [x] Support incoming webhooks v1: receive, validate, and save Patients (Leverage on DRF)
 - [x] Support tests for validations and response in order to prevent regressions
+- [ ] Pre-commit + Conventional commits
 - [ ] Spike: how webhooks implementation could be improved
+- [ ] Incoming Webhooks app
+- [ ] Setup Celery
+- [ ] Use Pytest instead of Django suite
+- [ ] Split views and serializers
+- [ ] Introduce Observability layer (Better logging and exception handling)
 
 ### Scripts
 
