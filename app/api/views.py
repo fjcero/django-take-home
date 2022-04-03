@@ -19,8 +19,11 @@ class WebhooksViewSet(viewsets.GenericViewSet, mixins.CreateModelMixin):
     serializer_class = WebhooksSerializer
 
     def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data, many=True)
+        serializer.is_valid(raise_exception=True)
+
         try:
-            return super().create(request, *args, **kwargs)
+            serializer.save()
         except IntegrityError:
             """
             Ignore all Integrity Error expetions
