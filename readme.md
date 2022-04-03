@@ -111,7 +111,7 @@ Once the reviewers are added to the repository, we will conduct a quick PR revie
 
 - [x] Initial Commit
 - [x] Setup Dev Environment (Runtime, Virtual Env, IDE)
-- [ ] Support incoming webhooks v1: receive, validate, and save Patients
+- [ ] Support incoming webhooks v1: receive, validate, and save Patients (Leverage on DRF)
 - [ ] Support tests for validations and response in order to prevent regressions
 - [ ] Spike: how webhooks implementation could be improved
 
