@@ -27,13 +27,33 @@ class APITest(APITestCase):
         self.assertEquals(valid_response.status_code, status.HTTP_201_CREATED)
 
     def test_ehr_webhook(self):
-        error_case_payload = self.client.post(
+        error_case_payload_single = self.client.post(
             "/ehr_webhook/",
             data=dict(email="jane@example.com", name="Name"),
             format="json",
         )
-
-        success_case_single = 201
-
-        self.assertEquals(error_case_payload.status_code, status.HTTP_400_BAD_REQUEST)
-        self.assertEquals(success_case_single, status.HTTP_201_CREATED)
+        error_case_payload_empty = self.client.post(
+            "/ehr_webhook/",
+            data=[dict(email="", name="")],
+            format="json",
+        )
+        error_case_payload_email = self.client.post(
+            "/ehr_webhook/",
+            data=[dict(email="jane", name="name")],
+            format="json",
+        )
+        success_case = self.client.post(
+            "/ehr_webhook/",
+            data=[dict(email="jane@example.com", name="name")],
+            format="json",
+        )
+        self.assertEquals(
+            error_case_payload_single.status_code, status.HTTP_400_BAD_REQUEST
+        )
+        self.assertEquals(
+            error_case_payload_empty.status_code, status.HTTP_400_BAD_REQUEST
+        )
+        self.assertEquals(
+            error_case_payload_email.status_code, status.HTTP_400_BAD_REQUEST
+        )
+        self.assertEquals(success_case.status_code, status.HTTP_201_CREATED)
