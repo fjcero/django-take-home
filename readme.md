@@ -76,13 +76,13 @@ At this point you should be able to do either of the following:
 
 We want to ensure you submit a successful solution so here is our assessment grading rubric.
 
-|  | Task / Skill-Check   | Description                                                                         |
-|---|-------------------|-------------------------------------------------------------------------------------|
-| :thumbsup: | Code Complete        | Did you complete the assessment in it's entirety in terms of functionality          |
-| :white_check_mark: | CI Passes | We expect the __CI Runner__ using `github-actions` to pass. |
-| :satellite: | API / Network Comms. | Were networking communications properly configured                                  |
-| :thought_balloon: | Pull-Request         | Open up a proper PR, **_read the submission process below_**                            |
-| :shipit: | Commit History       | We value [conventional-commits](https://www.conventionalcommits.org/en/v1.0.0)      |
+|                    | Task / Skill-Check   | Description                                                                    |
+| ------------------ | -------------------- | ------------------------------------------------------------------------------ |
+| :thumbsup:         | Code Complete        | Did you complete the assessment in it's entirety in terms of functionality     |
+| :white_check_mark: | CI Passes            | We expect the __CI Runner__ using `github-actions` to pass.                    |
+| :satellite:        | API / Network Comms. | Were networking communications properly configured                             |
+| :thought_balloon:  | Pull-Request         | Open up a proper PR, **_read the submission process below_**                   |
+| :shipit:           | Commit History       | We value [conventional-commits](https://www.conventionalcommits.org/en/v1.0.0) |
 
 ---
 
@@ -105,3 +105,9 @@ Invite `mgan59`, `DanOB34`, `CMitchell08`, `ramirog89` to your repository so we 
 Once the reviewers are added to the repository, we will conduct a quick PR review and setup a time to go over the code together.
 
 
+## Solution
+
+```
+pipenv install
+pipenv shell
+```
