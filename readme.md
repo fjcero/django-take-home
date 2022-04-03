@@ -107,7 +107,46 @@ Once the reviewers are added to the repository, we will conduct a quick PR revie
 
 ## Solution
 
-```
+### Checklist
+
+- [x] Initial Commit
+- [x] Setup Dev Environment (Runtime, Virtual Env, IDE)
+- [ ] Support incoming webhooks v1: receive, validate, and save Patients
+- [ ] Support tests for validations and response in order to prevent regressions
+- [ ] Spike: how webhooks implementation could be improved
+
+### Scripts
+
+```sh
 pipenv install
 pipenv shell
+pipenv run dev # python manage.py runserver
+pipenv run dev # python manage.py migrate
+```
+
+### Ide setup
+
+#### VSCode
+
+**Suggested configuration file**
+```json
+{
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/*.pyc": true,
+    "**/__pycache__": true
+  },
+  "python.pipenvPath": "<PATH_TO_VENV>", // pipenv --venv
+  "python.linting.pylintEnabled": true,
+  "python.linting.pylintArgs": [
+    "--disable=C0111", // missing docstring
+    "--load-plugins=pylint_django"
+  ],
+  "python.linting.enabled": true,
+  "python.formatting.provider": "black"
+}
 ```
