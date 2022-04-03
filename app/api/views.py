@@ -30,4 +30,4 @@ class WebhooksViewSet(viewsets.GenericViewSet, mixins.CreateModelMixin):
             """
             pass
 
-        return Response(request.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
