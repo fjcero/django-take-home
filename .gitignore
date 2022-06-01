@@ -148,3 +148,8 @@ cython_debug/
 
 # IDE
 .idea/
+
+# Visual Studio
+.vscode/
+.history/
+*.code-workspace

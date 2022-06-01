@@ -76,13 +76,13 @@ At this point you should be able to do either of the following:
 
 We want to ensure you submit a successful solution so here is our assessment grading rubric.
 
-|  | Task / Skill-Check   | Description                                                                         |
-|---|-------------------|-------------------------------------------------------------------------------------|
-| :thumbsup: | Code Complete        | Did you complete the assessment in it's entirety in terms of functionality          |
-| :white_check_mark: | CI Passes | We expect the __CI Runner__ using `github-actions` to pass. |
-| :satellite: | API / Network Comms. | Were networking communications properly configured                                  |
-| :thought_balloon: | Pull-Request         | Open up a proper PR, **_read the submission process below_**                            |
-| :shipit: | Commit History       | We value [conventional-commits](https://www.conventionalcommits.org/en/v1.0.0)      |
+|                    | Task / Skill-Check   | Description                                                                    |
+| ------------------ | -------------------- | ------------------------------------------------------------------------------ |
+| :thumbsup:         | Code Complete        | Did you complete the assessment in it's entirety in terms of functionality     |
+| :white_check_mark: | CI Passes            | We expect the __CI Runner__ using `github-actions` to pass.                    |
+| :satellite:        | API / Network Comms. | Were networking communications properly configured                             |
+| :thought_balloon:  | Pull-Request         | Open up a proper PR, **_read the submission process below_**                   |
+| :shipit:           | Commit History       | We value [conventional-commits](https://www.conventionalcommits.org/en/v1.0.0) |
 
 ---
 
@@ -105,3 +105,48 @@ Invite `mgan59`, `DanOB34`, `CMitchell08`, `ramirog89` to your repository so we 
 Once the reviewers are added to the repository, we will conduct a quick PR review and setup a time to go over the code together.
 
 
+## Solution
+
+### Checklist
+
+- [x] Initial Commit
+- [x] Setup Dev Environment (Runtime, Virtual Env, IDE)
+- [x] Support incoming webhooks v1: receive, validate, and save Patients (Leverage on DRF)
+- [ ] Support tests for validations and response in order to prevent regressions
+- [ ] Spike: how webhooks implementation could be improved
+
+### Scripts
+
+```sh
+pipenv install
+pipenv shell
+pipenv run dev # python manage.py runserver
+pipenv run dev # python manage.py migrate
+```
+
+### Ide setup
+
+#### VSCode
+
+**Suggested configuration file**
+```json
+{
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/*.pyc": true,
+    "**/__pycache__": true
+  },
+  "python.pipenvPath": "<PATH_TO_VENV>", // pipenv --venv
+  "python.linting.pylintEnabled": true,
+  "python.linting.pylintArgs": [
+    "--disable=C0111", // missing docstring
+    "--load-plugins=pylint_django"
+  ],
+  "python.linting.enabled": true,
+  "python.formatting.provider": "black"
+}
+```
