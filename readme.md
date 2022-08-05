@@ -1,10 +1,10 @@
-# Float Backend Candidate Assessment
+# Backend Candidate Assessment
 
-Welcome to the Float Candidate Assessment for Backend developers.  We have details instructions on how to get started and what a successful solution will entail.  Please _read and follow_ the enclosed instructions.
+Welcome to the Candidate Assessment for Backend developers.  We have details instructions on how to get started and what a successful solution will entail.  Please _read and follow_ the enclosed instructions.
 
 ## What are we building?
 
-At the core of Float is our Django API which powers multiple front-facing client(s) - specifically the authentication, CRUD interfaces for models, permissions, and complex workflows.
+At the core is our Django API which powers multiple front-facing client(s) - specifically the authentication, CRUD interfaces for models, permissions, and complex workflows.
 
 In our sample application we are adding a webhook `/ehr_webhook/` to our API / Platform.  Your task is the implementation of the endpoint so that it returns a `201` even if duplicates exist, but returns `400x` and `500x` for invalid situations (for example malformed `json`) and ensure the tests are passing and there are no regressions.  You will do the work on a separate branch and submit a pull-request (_see below_ for Submit Solution).
 
@@ -42,15 +42,16 @@ You are to implement a new webook endpoint that accepts the following `POST /ehr
 
 ```json
 [
-  {"email":"pete@floatfi.com", "name": "Pete Townshend"},
-  {"email":"Jane@floatfi.com", "name": "Jane Buckneer"}
+  {"email":"pete@example.com", "name": "Pete Townshend"},
+  {"email":"Jane@example.com", "name": "Jane Buckneer"}
 ]
 ```
 
 To help you in your work here is an example of our vendors webhook all to our server
 
 ```shell
-curl -X POST -H "Content-Type: application/json"  -d '[{"email":"pete@floatfi.com", "name": "Pete Townshend"},{"email":"Jane@floatfi.com", "name": "Jane Buckneer"}]' http://localhost:8000/ehr_webhook/
+curl -X POST -H "Content-Type: application/json"  -d '[{"email":"pete@
+fi.com", "name": "Pete Townshend"},{"email":"Jane@example.com", "name": "Jane Buckneer"}]' http://localhost:8000/ehr_webhook/
 ```
 ---
 
