@@ -36,7 +36,7 @@ We also are providing an initial endpoint for you to have as a basis
 - __GET__ `/patient/` will return a list of patients
 - __POST__ `/patient/` - As a __POST__ requires a json body with `email`, and `name` as required fields. Returns `201`
 
-#### Assessment Details 
+#### Assessment Details
 
 You are to implement a new webook endpoint that accepts the following `POST /ehr_webhook` that will contain an array of data as:
 
@@ -113,23 +113,55 @@ Once the reviewers are added to the repository, we will conduct a quick PR revie
 - [x] Initial Commit
 - [x] Setup Dev Environment (Runtime, Virtual Env, IDE)
 - [x] Support incoming webhooks v1: receive, validate, and save Patients (Leverage on DRF)
-- [ ] Support tests for validations and response in order to prevent regressions
-- [ ] Spike: how webhooks implementation could be improved
+- [x] Support tests for validations and response in order to prevent regressions
+- [x] Pre-commit + Conventional commits
+- [x] Spike: how webhooks implementation could be improved
+- [ ] Incoming Webhooks app
+- [ ] Setup Celery
+- [ ] Use Pytest instead of Django suite
+- [ ] Split views and serializers
+- [ ] Introduce Observability layer (Better logging and exception handling)
 
 ### Scripts
 
 ```sh
 pipenv install
 pipenv shell
-pipenv run dev # python manage.py runserver
-pipenv run dev # python manage.py migrate
+pipenv run dev     # python manage.py runserver
+pipenv run migrate # python manage.py migrate
 ```
 
 ### Ide setup
 
+#### Pre-commit
+
+> Install pre-commit within `.git/hooks/pre-commit`.
+
+```sh
+pre-commit install
+pre-commit install --hook-type commit-msg
+```
+
+**Supports:**
+
+- ✅ Conventional commits
+- ✅ Trailing and whitespace checks
+- ✅ Check yaml sintax
+- ✅ Check merge conflicts
+- ✅ Prevent debug statements
+- ✅ Check for large files added
+- ✅ Check `requirements.txt` file to be present
+- ✅ Django: check project for potential problems
+- ✅ Django: check project for missing migrations
+- ✅ Python: flake8
+- ✅ Python: isort
+- ✅ Python: black
+
+
 #### VSCode
 
 **Suggested configuration file**
+
 ```json
 {
   "files.exclude": {
@@ -151,3 +183,29 @@ pipenv run dev # python manage.py migrate
   "python.formatting.provider": "black"
 }
 ```
+
+### Endpoint
+
+**Endpoint**: `/ehr_webhook/`
+**Allow**: `POST`, `OPTIONS`
+**Content-Type**: `application/json`
+**Payload**
+```json
+[
+    {
+        "email": "jane@example.com",
+        "name": "Jane Doe"
+    },
+    {
+        "email": "fjcero@gmail.com",
+        "name": "Francisco"
+    }
+]
+```
+
+### Specifications
+
+- The implementation of the endpoint returns a `201` HTTP Status Code, even if duplicates exist.
+- HTTP errors like `400x` and `500x` are triggered in invalid situations,  for example malformed `json`
+- Tests are passing and there are no regressions
+- Conventional commits format applied
